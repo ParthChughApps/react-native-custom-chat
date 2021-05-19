@@ -11,7 +11,7 @@ import {
   renderCustomView,
 } from './MessageContainer';
 
-const Chats = () => {
+const Chats = ({CameraIcon, AudioIcon}) => {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -43,18 +43,18 @@ const Chats = () => {
       bottomOffset={26}
       onPressAvatar={console.log}
       renderInputToolbar={renderInputToolbar}
-      renderActions={renderActions}
+      renderActions={(props) => renderActions({props,CameraIcon})}
       renderComposer={renderComposer}
-      renderSend={renderSend}
-      renderAvatar={renderAvatar}
-      renderBubble={renderBubble}
+      renderSend={(props) => renderSend({props, AudioIcon})}
+      // renderAvatar={renderAvatar}
+      // renderBubble={renderBubble}
       renderSystemMessage={renderSystemMessage}
       renderMessage={renderMessage}
       renderMessageText={renderMessageText}
       // renderMessageImage
-      renderCustomView={renderCustomView}
+      // renderCustomView={renderCustomView}
       isCustomViewBottom
-      messagesContainerStyle={{ backgroundColor: 'indigo' }}
+      messagesContainerStyle={{ backgroundColor: '#E5E5E5' }}
       parsePatterns={(linkStyle) => [
         {
           pattern: /#(\w+)/,

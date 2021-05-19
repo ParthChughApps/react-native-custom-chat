@@ -1,21 +1,20 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Image } from 'react-native';
 import { InputToolbar, Actions, Composer, Send } from 'react-native-gifted-chat';
 
 export const renderInputToolbar = (props) => (
   <InputToolbar
     {...props}
     containerStyle={{
-      backgroundColor: '#222B45',
+      // backgroundColor: '#222B45',
       paddingTop: 6,
     }}
     primaryStyle={{ alignItems: 'center' }}
   />
 );
 
-export const renderActions = (props) => (
+export const renderActions = ({props, CameraIcon}) => (
   <Actions
     {...props}
     containerStyle={{
@@ -28,12 +27,7 @@ export const renderActions = (props) => (
       marginBottom: 0,
     }}
     icon={() => (
-      <Image
-        style={{ width: 32, height: 32 }}
-        source={{
-          uri: 'https://placeimg.com/32/32/any',
-        }}
-      />
+      <CameraIcon />
     )}
     options={{
       'Choose From Library': () => {
@@ -63,23 +57,18 @@ export const renderComposer = (props) => (
   />
 );
 
-export const renderSend = (props) => (
+export const renderSend = ({props, AudioIcon}) => (
   <Send
     {...props}
     disabled={!props.text}
     containerStyle={{
-      width: 44,
-      height: 44,
+      width: 50,
+      height: 50,
       alignItems: 'center',
       justifyContent: 'center',
       marginHorizontal: 4,
     }}
   >
-    <Image
-      style={{ width: 32, height: 32 }}
-      source={{
-        uri: 'https://placeimg.com/32/32/any',
-      }}
-    />
+    {!props.text && <AudioIcon />}
   </Send>
 );
