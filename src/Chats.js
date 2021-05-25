@@ -38,16 +38,16 @@ const Chats = ({CameraIcon, AudioIcon}) => {
       alwaysShowSend
       scrollToBottom
       // showUserAvatar
-      renderAvatarOnTop
-      renderUsernameOnMessage
-      bottomOffset={26}
+      // renderAvatarOnTop
+      // renderUsernameOnMessage
+      bottomOffset={40}
       onPressAvatar={console.log}
       renderInputToolbar={renderInputToolbar}
       renderActions={(props) => renderActions({props,CameraIcon})}
       renderComposer={renderComposer}
       renderSend={(props) => renderSend({props, AudioIcon})}
       // renderAvatar={renderAvatar}
-      // renderBubble={renderBubble}
+      renderBubble={renderBubble}
       renderSystemMessage={renderSystemMessage}
       renderMessage={renderMessage}
       renderMessageText={renderMessageText}

@@ -1,10 +1,10 @@
 const messages = [
-  {
-    _id: 1,
-    text: 'This is a system message',
-    createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
-    system: true,
-  },
+  // {
+  //   _id: 1,
+  //   text: 'This is a system message',
+  //   createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
+  //   system: true,
+  // },
   {
     _id: 2,
     text: 'Hello developer',
@@ -35,24 +35,24 @@ const messages = [
       name: 'React Native',
       avatar: 'https://placeimg.com/140/140/any',
     },
-    quickReplies: {
-      type: 'radio', // or 'checkbox',
-      keepIt: true,
-      values: [
-        {
-          title: '😋 Yes',
-          value: 'yes',
-        },
-        {
-          title: '📷 Yes, let me show you with a picture!',
-          value: 'yes_picture',
-        },
-        {
-          title: '😞 Nope. What?',
-          value: 'no',
-        },
-      ],
-    },
+    // quickReplies: {
+    //   type: 'radio', // or 'checkbox',
+    //   keepIt: true,
+    //   values: [
+    //     {
+    //       title: '😋 Yes',
+    //       value: 'yes',
+    //     },
+    //     {
+    //       title: '📷 Yes, let me show you with a picture!',
+    //       value: 'yes_picture',
+    //     },
+    //     {
+    //       title: '😞 Nope. What?',
+    //       value: 'no',
+    //     },
+    //   ],
+    // },
   },
   {
     _id: 5,

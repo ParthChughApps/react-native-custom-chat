@@ -6,8 +6,14 @@ import { Avatar, Bubble, SystemMessage, Message, MessageText } from 'react-nativ
 export const renderAvatar = (props) => (
   <Avatar
     {...props}
-    containerStyle={{ left: { borderWidth: 3, borderColor: 'red' }, right: {} }}
-    imageStyle={{ left: { borderWidth: 3, borderColor: 'blue' }, right: {} }}
+    containerStyle={{
+      left: { borderWidth: 3, borderColor: 'red' },
+      right: {}
+    }}
+    imageStyle={{
+      left: { borderWidth: 3, borderColor: 'white' },
+      right: { borderWidth: 3, borderColor: '#DEF2F1', backgroundColor: '#DEF2F1' }
+    }}
   />
 );
 
@@ -20,22 +26,26 @@ export const renderBubble = (props) => (
       left: { borderColor: '#E5E5E5', borderWidth: 8 },
       right: {},
     }}
+    timeTextStyle={{ 
+      right: { color: 'gray',},
+      left: { color: 'gray'},
+    }}
     wrapperStyle={{
-      left: { borderColor: '#E5E5E5', borderWidth: 4 },
-      right: {},
+      right: { backgroundColor: props?.currentMessage?.image && "transparent" },
+      left: { backgroundColor: props?.currentMessage?.image && "transparent" },
     }}
     bottomContainerStyle={{
-      left: { borderColor: '#E5E5E5', borderWidth: 4 },
-      right: {},
+      left: { backgroundColor: 'white', borderBottomLeftRadius: 10, borderBottomRightRadius: 10 },
+      right: { backgroundColor: '#DEF2F1', borderBottomLeftRadius: 10, borderBottomRightRadius: 10 },
     }}
     tickStyle={{}}
-    usernameStyle={{ color: 'tomato', fontWeight: '100' }}
+    // usernameStyle={{ color: 'tomato', fontWeight: '100' }}
     containerToNextStyle={{
       left: { borderColor: '#DEF2F1', borderWidth: 4 },
       right: {},
     }}
     containerToPreviousStyle={{
-      left: { borderColor: '#DEF2F1', borderWidth: 4 },
+      left: { borderColor: 'white', borderWidth: 4 },
       right: {},
     }}
   />
@@ -44,9 +54,9 @@ export const renderBubble = (props) => (
 export const renderSystemMessage = (props) => (
   <SystemMessage
     {...props}
-    // containerStyle={{ backgroundColor: 'pink' }}
-    // wrapperStyle={{ borderWidth: 10, borderColor: 'white' }}
-    // textStyle={{ color: 'crimson', fontWeight: '900' }}
+  // containerStyle={{ backgroundColor: 'pink' }}
+  // wrapperStyle={{ borderWidth: 10, borderColor: 'white' }}
+  // textStyle={{ color: 'crimson', fontWeight: '900' }}
   />
 );
 
@@ -65,7 +75,7 @@ export const renderMessageText = (props) => (
   <MessageText
     {...props}
     containerStyle={{
-      left: { backgroundColor: '#DEF2F1' },
+      left: { backgroundColor: 'white' },
       right: { backgroundColor: '#DEF2F1' },
     }}
     textStyle={{
@@ -73,15 +83,15 @@ export const renderMessageText = (props) => (
       right: { color: 'black' },
     }}
     linkStyle={{
-      left: { color: '#DEF2F1' },
-      right: { color: '#DEF2F1' },
+      left: { color: 'darkblue' },
+      right: { color: 'darkblue' },
     }}
-    customTextStyle={{ fontSize: 24, lineHeight: 24 }}
+    customTextStyle={{ fontSize: 13, lineHeight: 13 }}
   />
 );
 
 export const renderCustomView = ({ user }) => (
   <View>
-    
+    <Text>{JSON.stringify(user)}</Text>
   </View>
 );
