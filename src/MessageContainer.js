@@ -3,51 +3,39 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Avatar, Bubble, SystemMessage, Message, MessageText } from 'react-native-gifted-chat';
 
-export const renderAvatar = (props) => (
+export const renderAvatar = ({ props, avatarImageStyle, avatarContainerStyle }) => (
   <Avatar
     {...props}
-    containerStyle={{
-      left: { borderWidth: 3, borderColor: 'red' },
-      right: {}
-    }}
-    imageStyle={{
-      left: { borderWidth: 3, borderColor: 'white' },
-      right: { borderWidth: 3, borderColor: '#DEF2F1', backgroundColor: '#DEF2F1' }
-    }}
+    containerStyle={avatarContainerStyle}
+    imageStyle={avatarImageStyle}
   />
 );
 
-export const renderBubble = (props) => (
+export const renderBubble = ({
+  props, 
+  bubbleContainerStyle,
+  bubbleTimeTextStyle,
+  bubbleWrapperStyle,
+  bubbleBottomContainerStyle,
+  bubbleTickStyle,
+  bubbleContainerToNextStyle,
+  bubbleContainerToPreviousStyle
+}) => (
   <Bubble
     {...props}
     // renderTime={() => <Text>Time</Text>}
     // renderTicks={() => <Text>Ticks</Text>}
-    containerStyle={{
-      left: { borderColor: '#E5E5E5', borderWidth: 8 },
-      right: {},
-    }}
-    timeTextStyle={{ 
-      right: { color: 'gray',},
-      left: { color: 'gray'},
-    }}
+    containerStyle={bubbleContainerStyle}
+    timeTextStyle={bubbleTimeTextStyle}
     wrapperStyle={{
-      right: { backgroundColor: props?.currentMessage?.image && "transparent" },
-      left: { backgroundColor: props?.currentMessage?.image && "transparent" },
+      right: { backgroundColor: props?.currentMessage?.image && "transparent", ...(bubbleWrapperStyle?.left || {}) },
+      left: { backgroundColor: props?.currentMessage?.image && "transparent", ...(bubbleWrapperStyle?.right || {}) },
     }}
-    bottomContainerStyle={{
-      left: { backgroundColor: 'white', borderBottomLeftRadius: 10, borderBottomRightRadius: 10 },
-      right: { backgroundColor: '#DEF2F1', borderBottomLeftRadius: 10, borderBottomRightRadius: 10 },
-    }}
-    tickStyle={{}}
+    bottomContainerStyle={bubbleBottomContainerStyle}
+    tickStyle={bubbleTickStyle}
     // usernameStyle={{ color: 'tomato', fontWeight: '100' }}
-    containerToNextStyle={{
-      left: { borderColor: '#DEF2F1', borderWidth: 4 },
-      right: {},
-    }}
-    containerToPreviousStyle={{
-      left: { borderColor: 'white', borderWidth: 4 },
-      right: {},
-    }}
+    containerToNextStyle={bubbleContainerToNextStyle}
+    containerToPreviousStyle={bubbleContainerToPreviousStyle}
   />
 );
 
@@ -60,7 +48,7 @@ export const renderSystemMessage = (props) => (
   />
 );
 
-export const renderMessage = (props) => (
+export const renderMessage = ({props}) => (
   <Message
     {...props}
     // renderDay={() => <Text>Date</Text>}
@@ -71,22 +59,19 @@ export const renderMessage = (props) => (
   />
 );
 
-export const renderMessageText = (props) => (
+export const renderMessageText = ({
+  props,
+  renderMessageContainerStyle,
+  renderMessageTextStyle,
+  renderMessageCustomTextStyle,
+  renderMessageLinkStyle
+}) => (
   <MessageText
     {...props}
-    containerStyle={{
-      left: { backgroundColor: 'white' },
-      right: { backgroundColor: '#DEF2F1' },
-    }}
-    textStyle={{
-      left: { color: 'black' },
-      right: { color: 'black' },
-    }}
-    linkStyle={{
-      left: { color: 'darkblue' },
-      right: { color: 'darkblue' },
-    }}
-    customTextStyle={{ fontSize: 13, lineHeight: 13 }}
+    containerStyle={renderMessageContainerStyle}
+    textStyle={renderMessageTextStyle}
+    customTextStyle={renderMessageCustomTextStyle}
+    linkStyle={renderMessageLinkStyle}
   />
 );
 

@@ -14,18 +14,10 @@ export const renderInputToolbar = (props) => (
   />
 );
 
-export const renderActions = ({props, CameraIcon}) => (
+export const renderActions = ({props, CameraIcon, cameraIconStyle}) => (
   <Actions
     {...props}
-    containerStyle={{
-      width: 44,
-      height: 44,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginLeft: 4,
-      marginRight: 4,
-      marginBottom: 0,
-    }}
+    containerStyle={cameraIconStyle}
     icon={() => (
       <CameraIcon />
     )}
@@ -41,34 +33,19 @@ export const renderActions = ({props, CameraIcon}) => (
   />
 );
 
-export const renderComposer = (props) => (
+export const renderComposer = ({props, textInputStyle}) => (
   <Composer
     {...props}
-    textInputStyle={{
-      color: '#222B45',
-      backgroundColor: '#EDF1F7',
-      borderWidth: 1,
-      borderRadius: 5,
-      borderColor: '#E4E9F2',
-      paddingTop: 8.5,
-      paddingHorizontal: 12,
-      marginLeft: 0,
-    }}
+    textInputStyle={textInputStyle}
   />
 );
 
-export const renderSend = ({props, AudioIcon}) => (
+export const renderSend = ({props, AudioIcon, SendIcon, sendContainerStyle}) => (
   <Send
     {...props}
     disabled={!props.text}
-    containerStyle={{
-      width: 50,
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginHorizontal: 4,
-    }}
+    containerStyle={sendContainerStyle}
   >
-    {!props.text && <AudioIcon />}
+    {!props.text ? <AudioIcon /> : <SendIcon/>}
   </Send>
 );

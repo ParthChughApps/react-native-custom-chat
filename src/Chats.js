@@ -11,7 +11,32 @@ import {
   renderCustomView,
 } from './MessageContainer';
 
-const Chats = ({CameraIcon, AudioIcon}) => {
+const Chats = (props) => {
+  const {
+    CameraIcon, 
+    AudioIcon, 
+    data, 
+    user, 
+    SendIcon, 
+    textInputStyle, 
+    cameraIconStyle, 
+    messagesContainerStyle,
+    avatarImageStyle,
+    avatarContainerStyle,
+    bubbleContainerStyle,
+    bubbleTimeTextStyle,
+    bubbleWrapperStyle,
+    bubbleBottomContainerStyle,
+    bubbleTickStyle,
+    bubbleContainerToNextStyle,
+    bubbleContainerToPreviousStyle,
+    renderMessageContainerStyle,
+    renderMessageTextStyle,
+    renderMessageLinkStyle,
+    renderMessageCustomTextStyle,
+    sendContainerStyle
+  } = props;
+
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -25,36 +50,49 @@ const Chats = ({CameraIcon, AudioIcon}) => {
 
   return (
     <GiftedChat
-      messages={messages}
+      messages={data || messages}
       text={text}
       onInputTextChanged={setText}
       onSend={onSend}
-      user={{
-        _id: 1,
-        name: 'Aaron',
-        avatar: 'https://placeimg.com/150/150/any',
-      }}
+      user={user}
       alignTop
       alwaysShowSend
       scrollToBottom
       // showUserAvatar
-      // renderAvatarOnTop
-      // renderUsernameOnMessage
+      // showAvatarForEveryMessage
+      renderAvatarOnTop
+      renderUsernameOnMessage={false}
       bottomOffset={40}
       onPressAvatar={console.log}
       renderInputToolbar={renderInputToolbar}
-      renderActions={(props) => renderActions({props,CameraIcon})}
-      renderComposer={renderComposer}
-      renderSend={(props) => renderSend({props, AudioIcon})}
-      // renderAvatar={renderAvatar}
-      renderBubble={renderBubble}
+      renderActions={(props) => renderActions({props,CameraIcon, cameraIconStyle})}
+      renderComposer={(props) => renderComposer({props, textInputStyle})}
+      renderSend={(props) => renderSend({props, AudioIcon, SendIcon, sendContainerStyle})}
+      renderAvatar={(props) => renderAvatar({props, avatarImageStyle, avatarContainerStyle})}
+      renderBubble={(props) => renderBubble({
+        props, 
+        bubbleContainerStyle,
+        bubbleTimeTextStyle,
+        bubbleWrapperStyle,
+        bubbleBottomContainerStyle,
+        bubbleTickStyle,
+        bubbleContainerToNextStyle,
+        bubbleContainerToPreviousStyle
+      })}
       renderSystemMessage={renderSystemMessage}
-      renderMessage={renderMessage}
-      renderMessageText={renderMessageText}
-      // renderMessageImage
+      renderMessage={(props) => renderMessage({
+        props, 
+      })}
+      renderMessageText={(props) => renderMessageText({
+        props,
+        renderMessageContainerStyle,
+        renderMessageTextStyle,
+        renderMessageCustomTextStyle,
+        renderMessageLinkStyle
+      })}
       // renderCustomView={renderCustomView}
       isCustomViewBottom
-      messagesContainerStyle={{ backgroundColor: '#E5E5E5' }}
+      messagesContainerStyle={messagesContainerStyle}
       parsePatterns={(linkStyle) => [
         {
           pattern: /#(\w+)/,
