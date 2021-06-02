@@ -7,7 +7,6 @@ export const renderInputToolbar = (props) => (
   <InputToolbar
     {...props}
     containerStyle={{
-      // backgroundColor: '#222B45',
       paddingTop: 6,
     }}
     primaryStyle={{ alignItems: 'center' }}
@@ -46,6 +45,6 @@ export const renderSend = ({props, AudioIcon, SendIcon, sendContainerStyle}) => 
     disabled={!props.text}
     containerStyle={sendContainerStyle}
   >
-    {!props.text ? <AudioIcon /> : <SendIcon/>}
+    {!props.text && <AudioIcon />}
   </Send>
 );

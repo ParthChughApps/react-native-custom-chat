@@ -15,7 +15,6 @@ const Chats = (props) => {
   const {
     CameraIcon, 
     AudioIcon, 
-    data, 
     user, 
     SendIcon, 
     textInputStyle, 
@@ -34,15 +33,20 @@ const Chats = (props) => {
     renderMessageTextStyle,
     renderMessageLinkStyle,
     renderMessageCustomTextStyle,
-    sendContainerStyle
+    sendContainerStyle,
+    data
   } = props;
 
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
-
+  console.log('data131314', data)
+  console.log('initialMessages131314', initialMessages)
   useEffect(() => {
-    setMessages(initialMessages.reverse());
-  }, []);
+    if(data?.length > 0) {
+      setMessages([...data].reverse());
+    }
+  },[data])
+  
 
   const onSend = (newMessages = []) => {
     setMessages((prevMessages) => GiftedChat.append(prevMessages, newMessages));
@@ -50,7 +54,7 @@ const Chats = (props) => {
 
   return (
     <GiftedChat
-      messages={data || messages}
+      messages={messages}
       text={text}
       onInputTextChanged={setText}
       onSend={onSend}
@@ -58,11 +62,13 @@ const Chats = (props) => {
       alignTop
       alwaysShowSend
       scrollToBottom
+      // showUserAvatar={false}
       // showUserAvatar
       // showAvatarForEveryMessage
       renderAvatarOnTop
       renderUsernameOnMessage={false}
-      bottomOffset={40}
+      bottomOffset={80}
+      minInputToolbarHeight={50}
       onPressAvatar={console.log}
       renderInputToolbar={renderInputToolbar}
       renderActions={(props) => renderActions({props,CameraIcon, cameraIconStyle})}

@@ -12,7 +12,7 @@ const messages = [
     user: {
       _id: 2,
       name: 'React Native',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: null,
     },
   },
   {
@@ -22,7 +22,7 @@ const messages = [
     user: {
       _id: 1,
       name: 'React Native',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: null,
     },
     image: 'https://placeimg.com/960/540/any',
   },
@@ -33,7 +33,7 @@ const messages = [
     user: {
       _id: 2,
       name: 'React Native',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: null,
     },
     // quickReplies: {
     //   type: 'radio', // or 'checkbox',
@@ -61,7 +61,7 @@ const messages = [
     user: {
       _id: 2,
       name: 'React Native',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: null,
     },
   },
   {
@@ -74,7 +74,7 @@ const messages = [
     user: {
       _id: 1,
       name: 'React Native',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: null,
     },
   },
 ];
