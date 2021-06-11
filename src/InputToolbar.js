@@ -45,6 +45,6 @@ export const renderSend = ({props, AudioIcon, SendIcon, sendContainerStyle}) => 
     disabled={!props.text}
     containerStyle={sendContainerStyle}
   >
-    {!props.text && <AudioIcon />}
+    {!props.text ? <AudioIcon /> : <SendIcon />}
   </Send>
 );
