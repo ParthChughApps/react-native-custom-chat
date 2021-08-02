@@ -34,27 +34,20 @@ const Chats = (props) => {
     renderMessageLinkStyle,
     renderMessageCustomTextStyle,
     sendContainerStyle,
-    data
+    data,
+    onSubmitChat
   } = props;
 
   const [text, setText] = useState('');
-  const [messages, setMessages] = useState([]);
-  console.log('data131314', data)
-  console.log('initialMessages131314', initialMessages)
-  useEffect(() => {
-    if(data?.length > 0) {
-      setMessages([...data].reverse());
-    }
-  },[data])
   
 
   const onSend = (newMessages = []) => {
-    setMessages((prevMessages) => GiftedChat.append(prevMessages, newMessages));
+    onSubmitChat(newMessages)
   };
 
   return (
     <GiftedChat
-      messages={messages}
+      messages={data}
       text={text}
       onInputTextChanged={setText}
       onSend={onSend}
@@ -62,9 +55,6 @@ const Chats = (props) => {
       alignTop
       alwaysShowSend
       scrollToBottom
-      // showUserAvatar={false}
-      // showUserAvatar
-      // showAvatarForEveryMessage
       renderAvatarOnTop
       renderUsernameOnMessage={false}
       bottomOffset={80}
